@@ -4,7 +4,15 @@ const getPosts = (req, res)=>{
 
 
 const createPost = (req, res)=>{
-    res.status(200).json({message:'post Created'})
+
+    if(!req.body.text){
+        res.status(400)
+        throw new Error('Please add a text')
+    }
+
+
+    console.log(req.body)
+    res.status(200).json({message:req.body})
 }
 
 

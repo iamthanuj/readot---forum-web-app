@@ -4,7 +4,7 @@ const {getPosts, createPost, updatePost, deletePost} = require('../controllers/p
 
 router.get('/', getPosts)
 
-router.post('/create', createPost)
+router.post('/create/', createPost)
 
 
 router.put('/update/:id', updatePost)

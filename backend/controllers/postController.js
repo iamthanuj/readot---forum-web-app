@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
+
 const asyncHandler = require("express-async-handler");
 const Post = require('../models/postModel')
+const User = require('../models/userModel')
 
 
 //@desc Get posts
@@ -8,7 +9,6 @@ const Post = require('../models/postModel')
 //@access private
 const getPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find()
-
   res.status(200).json(posts);
 });
 
@@ -25,7 +25,7 @@ const createPost = asyncHandler(async (req, res) => {
 
   const post = await Post.create({
     title: req.body.title,
-    description : req.body.desc,
+    description : req.body.description,
     image: req.body.image
 
   })
@@ -68,7 +68,7 @@ const deletePost = asyncHandler(async (req, res) => {
     throw new Error('Post Not Found')
   }
 
-  await Post.deleteOne(``)
+  await Post.deleteOne()
 
   res.status(200).json({ message: `${req.params.id} is deleted` });
 });

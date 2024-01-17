@@ -33,9 +33,10 @@ const registerUser = asynchandler(async (req, res) => {
 
   if (user) {
     res.status(201).json({
-      _id: user._id,
+      _id: user.id,
       name: user.firstName,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -56,6 +57,7 @@ const loginUser = asynchandler(async (req, res) => {
       _id: user._id,
       namee: user.firstName,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -71,6 +73,11 @@ const loginUser = asynchandler(async (req, res) => {
 const getUser = asynchandler(async (req, res) => {
   res.status(200).json({ message: " login user" });
 });
+
+//generate jwt
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
 
 module.exports = {
   registerUser,

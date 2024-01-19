@@ -1,11 +1,12 @@
 {
-  "name": "yestro-shoe-shop---e-commerce",
+  "name": "readot---forum-web-app",
   "version": "1.0.0",
-  "description": "E-Commerce webapp for Yestro shoe store",
+  "description": "Interactive blog for techies",
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "client" : "cd frontend && npm run dev"
   },
   "author": "Thanuja Fernando",
   "license": "ISC",

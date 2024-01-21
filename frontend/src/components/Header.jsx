@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import mainLogo from "../assets/readot-logo-white.png";
 
 function Header() {
@@ -8,19 +8,19 @@ function Header() {
       <div className="container p-5 mx-auto h-[80px] flex items-center justify-between">
         {/* logo */}
         <div>
-          <img src={mainLogo} alt="main logo" className="w-36" />
+          <Link to="/" ><img src={mainLogo} alt="main logo" className="w-36" /></Link>
         </div>
 
         {/* nav controllers */}
         <ul className="text-white flex gap-8 ">
           <li>
-            <a href="/">Stories</a>
+            <Link to="/stories" >Stories</Link>
           </li>
           <li>
-            <a href="" onClick={useNavigate('profile')} >Profile</a>
+            <Link to="/Profile" >Profile</Link>
           </li>
           <li>
-            <a href=""    className="bg-secendoryColor py-2 px-4 rounded-full font-bold">Get started</a>
+            <Link  to="/login" className="bg-secendoryColor py-2 px-4 rounded-full font-bold" >Get started</Link>
           </li>
         </ul>
       </div>

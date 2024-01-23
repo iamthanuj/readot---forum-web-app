@@ -15,6 +15,10 @@ export default {
       colors:{
         mainColor:'rgb(25,25,25)',
         secendoryColor:'rgb(232,31,3)',
+      },
+      fontFamily:{
+        bodoni:['Bodoni Moda', 'serif'],
+        poppins:['Poppins', 'sans-serif'],
       }
     },
   },

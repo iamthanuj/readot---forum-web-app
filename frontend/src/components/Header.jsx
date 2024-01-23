@@ -6,8 +6,8 @@ import Getstarted from "./Getstarted";
 function Header() {
   const [display, setDisplay] = useState('')
 
-  const onDisplay = ()=>{
-    setDisplay('block')
+  const onDisplay = (e)=>{
+    setDisplay(e)
   }
 
   return (
@@ -27,11 +27,11 @@ function Header() {
             <Link to="/Profile" >Profile</Link>
           </li>
           <li>
-            <button onClick={onDisplay}  className="bg-secendoryColor py-2 px-4 rounded-full font-bold" >Get started</button>
+            <button onClick={()=>{onDisplay('block')}}  className="bg-secendoryColor py-2 px-4 rounded-full font-bold" >Get started</button>
           </li>
         </ul>
       </div>
-      <Getstarted display={display} />
+      <Getstarted display={display} onDisplay={onDisplay} />
     </div>
   );
 }

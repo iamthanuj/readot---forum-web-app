@@ -20,7 +20,7 @@ function Getstarted({ display, onDisplay }) {
       <div className="bg-white w-[400px] h-[500px] rounded-md shadow-xl flex flex-col justify-center relative ">
         {/* Register form */}
         <div className={show == "register" ? "block" : "hidden"}>
-          <Register onShow={onShow} />
+          <Register onShow={onShow} onDisplay={onDisplay} />
         </div>
 
         {/* login form */}

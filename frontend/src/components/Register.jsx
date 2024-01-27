@@ -1,30 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register, reset } from "../features/auth/authSlice";
+import { PuffLoader } from "react-spinners/";
 
-function Register({ onShow }) {
+function Register({ onShow, onDisplay }) {
+  const [registerData, setRegisterData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
 
-    const [registerData, setRegisterData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password:'',
-        password2:'',
-    })
+  const { firstName, lastName, email, password, password2 } = registerData;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const {firstName, lastName, email, password, password2} = registerData
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
 
-    const onChange =(e)=>{
-        setRegisterData((prevState)=>({
-            ...prevState,
-            [e.target.name] : e.target.value,
-        }))
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
     }
 
-    
-    const onSubmit = (e)=>{
-        e.preventDefault()
+    if (isSuccess || user) {
+      onDisplay("hidden");
+      navigate("/");
     }
 
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const onChange = (e) => {
+    setRegisterData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== password2) {
+      toast.error("Password do not match");
+    } else {
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        password,
+      };
+
+      dispatch(register(userData));
+
+      setRegisterData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        password2: "",
+      });
+
+    }
+  };
+
+  if (isLoading) {
+    return <PuffLoader color="#E81F03" size={60} className="mx-auto" />;
+  }
 
   return (
     <>

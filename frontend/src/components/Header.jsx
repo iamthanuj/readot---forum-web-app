@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux"
 import mainLogo from "../assets/readot-logo-white.png";
 import Getstarted from "./Getstarted";
 

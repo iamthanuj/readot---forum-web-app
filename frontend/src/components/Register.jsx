@@ -30,7 +30,7 @@ function Register({ onShow, onDisplay }) {
 
     if (isSuccess || user) {
       onDisplay("hidden");
-      navigate("/");
+      
     }
 
     dispatch(reset());

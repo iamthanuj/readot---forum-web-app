@@ -22,7 +22,7 @@ function Header() {
         {/* nav controllers */}
         <ul className="text-white flex gap-8 items-center ">
           <li>
-            <Link to="/stories" >Stories</Link>
+            <Link to="/" >Stories</Link>
           </li>
           <li>
             <Link to="/Profile" >Profile</Link>

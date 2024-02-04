@@ -12,7 +12,7 @@ function Header() {
   }
 
   return (
-    <div className="bg-mainColor flex justify-center items-center">
+    <div className="bg-mainColor flex justify-center items-center fixed left-0 right-0">
       <div className="container p-5 mx-auto h-[80px] flex items-center justify-between">
         {/* logo */}
         <div>

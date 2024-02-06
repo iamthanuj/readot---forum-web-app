@@ -3,8 +3,8 @@ import landingImage from "../assets/landing.jpg";
 function LandingPage() {
   return (
     <div className="h-screen w-full flex items-center justify-center bg-secendoryColor font-poppins">
-      <div className="flex flex-col gap-5 justify-between container mx-auto mt-[80px] md:flex-row">
-        <div className="flex flex-col justify-center gap-9">
+      <div className="flex flex-col-reverse gap-5 justify-between container mx-auto mt-[80px] md:flex-row">
+        <div className="flex flex-col justify-center gap-9 p-5">
           <h1 className="text-5xl  md:text-8xl font-bodoni text-white">
             Stay curious.
           </h1>
@@ -17,7 +17,7 @@ function LandingPage() {
             </button>
           </div>
         </div>
-        <div className="h-[480px] w-[480px] mx-auto md:h-[480px] md:w-[480px] md:mx-0">
+        <div className="h-[320px] w-[320px] mx-auto md:h-[480px] md:w-[480px] md:mx-0">
           <img src={landingImage} alt="" />
         </div>
       </div>

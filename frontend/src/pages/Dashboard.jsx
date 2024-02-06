@@ -1,14 +1,13 @@
 import LandingPage from "../components/LandingPage"
 
 function Dashboard() {
-
   const user = localStorage.getItem("user");
 
   return (
-   <>
-    <LandingPage/>
-   </>
-  )
+    <>
+      <LandingPage />
+    </>
+  );
 }
 
-export default Dashboard;
+export default Dashboard

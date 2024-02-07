@@ -6,7 +6,7 @@ import Getstarted from "./Getstarted";
 
 function Header() {
   const [display, setDisplay] = useState("");
-  const [barToggle, setBarToggle] = useState(false);
+  const [barToggle, setBarToggle] = useState(true);
 
   const user = localStorage.getItem('user')
 
@@ -65,6 +65,8 @@ function Header() {
         </div>
       </div>
       <Getstarted display={display} onDisplay={onDisplay} />
+      <div className={"absolute  h-[100px] bg-mainColor top-[80px] left-0 right-0 " + (!barToggle ? "block" : "hidden")}>
+      </div>
     </div>
   );
 }

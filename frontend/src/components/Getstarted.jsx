@@ -13,7 +13,7 @@ function Getstarted({ display, onDisplay }) {
   return (
     <div
       className={
-        "bg-white bg-opacity-80 w-full h-screen absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center " +
+        "bg-white bg-opacity-80 w-full h-screen absolute z-10 top-0 bottom-0 left-0 right-0 flex items-center justify-center " +
         (display == "block" ? "block" : "hidden")
       }
     >

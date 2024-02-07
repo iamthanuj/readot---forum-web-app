@@ -1,12 +1,13 @@
+import { useSelector } from "react-redux";
 import LandingPage from "../components/LandingPage"
 
 function Dashboard() {
-  const user = localStorage.getItem("user");
+  const {user} = useSelector((state)=> state.auth)
 
   return (
-    <>
-      <LandingPage />
-    </>
+   <div >
+      {user ? <h1 className="pt-[80px]" >Logged Story feed</h1> :  <LandingPage />  }
+   </div>
   );
 }
 

@@ -4,14 +4,14 @@ import mainLogo from "../assets/readot-logo-white.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Getstarted from "./Getstarted";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, reset } from "../features/auth/authSlice";
+import { logout, reset, userReset } from "../features/auth/authSlice";
 
 function Header() {
   const [display, setDisplay] = useState("");
   const [barToggle, setBarToggle] = useState(true);
 
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  let { user } = useSelector((state) => state.auth);
 
   const onDisplay = (e) => {
     setDisplay(e);
@@ -25,6 +25,7 @@ function Header() {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
+    dispatch(userReset());
   };
 
   return (

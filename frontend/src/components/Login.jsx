@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { login, reset } from "../features/auth/authSlice";
+import { PuffLoader } from "react-spinners/";
 
-function Login({ onShow }) {
+function Login({ onShow, onDisplay }) {
   const [loginFormData, setLoginFormData] = useState({
     email: "",
     password: "",
@@ -8,8 +13,40 @@ function Login({ onShow }) {
 
   const { email, password } = loginFormData;
 
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      onDisplay("hidden");
+      // navigate("/profile");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+
+
+
   const onSubmit = (e) => {
     e.preventDefault();
+    const userData = {
+      email,
+      password
+    }
+
+    dispatch(login(userData))
+
   };
 
   const onChange = (e) => {
@@ -20,6 +57,9 @@ function Login({ onShow }) {
   };
 
 
+  if (isLoading) {
+    return <PuffLoader color="#E81F03" size={60} className="mx-auto" />;
+  }
 
   return (
     <>
@@ -32,6 +72,7 @@ function Login({ onShow }) {
             className="focus:outline-0"
             type="email"
             name="email"
+            value={email}
             placeholder="Email"
             onChange={onChange}
           />
@@ -41,7 +82,9 @@ function Login({ onShow }) {
             className="focus:outline-0"
             type="password"
             name="password"
+            value={password}
             placeholder="Password"
+            onChange={onChange}
           />
         </div>
         <div className="text-center w-3/4 mx-auto mt-7">

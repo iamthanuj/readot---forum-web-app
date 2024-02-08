@@ -25,7 +25,7 @@ function Getstarted({ display, onDisplay }) {
 
         {/* login form */}
         <div className={show == "signin" ? "block" : "hidden"}>
-          <Login onShow={onShow} />
+          <Login onShow={onShow} onDisplay={onDisplay} />
         </div>
 
         <button
